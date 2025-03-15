@@ -1,0 +1,77 @@
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.gameName {
+  font-size: 48px;
+  color: #ffffff;
+}
+
+.helperText {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fcdfb5;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.sign-in-button,
+.guest-button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 80%;
+  max-width: 300px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.sign-in-button {
+  background-color: #f97316;
+  color: #ffffff;
+}
+
+.guest-button {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.sign-in-button:hover {
+  background-color: #ff7b00;
+}
+
+.guest-button:hover {
+  background-color: #009060;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sign-in-button,
+  .guest-button {
+    width: 90%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sign-in-button,
+  .guest-button {
+    width: 100%;
+  }
+}
