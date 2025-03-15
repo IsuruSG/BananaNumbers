@@ -1,0 +1,231 @@
+.game-title {
+  font-size: 64px;
+  color: #ffffff;
+}
+
+.game-description {
+  font-size: 19px;
+  color: #fcdfb5;
+  margin-bottom: 15px;
+}
+
+.game-modes-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.game-mode-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  width: 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 310px;
+}
+
+.mode-icon {
+  width: 100px;
+  height: auto;
+}
+
+.mode-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.mode-description {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.play-button {
+  width: 100%;
+  padding: 15px;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #f5b71c;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-inline: 90px;
+}
+
+.stat-card {
+  width: 250px;
+  height: 100px;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff26;
+  color: #ffffff;
+}
+
+.trophy-icon {
+  width: 30px;
+  height: auto;
+}
+
+.game-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.star-icon {
+  width: 30px;
+  height: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .game-title {
+    font-size: 48px;
+  }
+
+  .game-description {
+    font-size: 16px;
+  }
+
+  .game-modes-div {
+    gap: 15px;
+  }
+
+  .game-mode-card {
+    width: 45%;
+    min-height: 280px;
+  }
+
+  .mode-title {
+    font-size: 20px;
+  }
+
+  .mode-description {
+    font-size: 14px;
+  }
+
+  .play-button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .stats {
+    padding-inline: 50px;
+  }
+
+  .stat-card {
+    width: 200px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 36px;
+  }
+
+  .game-description {
+    font-size: 14px;
+  }
+
+  .game-modes-div {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .game-mode-card {
+    width: 80%;
+    min-height: 250px;
+  }
+
+  .mode-title {
+    font-size: 18px;
+  }
+
+  .mode-description {
+    font-size: 12px;
+  }
+
+  .play-button {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .stats {
+    padding-inline: 0px;
+  }
+
+  .stat-card {
+    width: 150px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 28px;
+  }
+
+  .game-description {
+    font-size: 12px;
+  }
+
+  .game-mode-card {
+    width: 90%;
+    min-height: 220px;
+  }
+
+  .mode-title {
+    font-size: 16px;
+  }
+
+  .mode-description {
+    font-size: 10px;
+  }
+
+  .play-button {
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .stats {
+    padding-inline: 0px;
+  }
+
+  .stat-card {
+    width: 120px;
+    height: 70px;
+  }
+
+  .trophy-icon,
+  .game-icon,
+  .star-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

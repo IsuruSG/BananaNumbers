@@ -12,7 +12,7 @@ const Home = () => {
   };
 
   const handleGuestClick = () => {
-    navigate("/classic");
+    navigate("/game-modes");
   };
 
   return (
