@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
+import GameModes from "./pages/GameModes/GameModes";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/game-modes" element={<GameModes />} />
       </Routes>
     </BrowserRouter>
   );
