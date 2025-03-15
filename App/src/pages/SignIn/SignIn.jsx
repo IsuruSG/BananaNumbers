@@ -12,9 +12,9 @@ function SignInPage() {
     console.log("Signing in...");
   };
 
-  // const handleSignUp = () => {
-  //   navigate("/sign-up");
-  // };
+  const handleSignUp = () => {
+    navigate("/sign-up");
+  };
 
   return (
     <Layout>
@@ -49,7 +49,10 @@ function SignInPage() {
         </div>
         <div>
           <p className="signup-prompt">
-            Don't have an account? <button className="signup-link">Sign Up</button>
+            Don't have an account?{" "}
+            <button className="signup-link" onClick={handleSignUp}>
+              Sign Up
+            </button>
           </p>
         </div>
       </div>
