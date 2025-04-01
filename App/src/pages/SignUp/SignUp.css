@@ -17,14 +17,14 @@
 }
 
 .email-input-group,
-.username-input-group,
+.name-input-group,
 .password-input-group {
   margin-bottom: 17px;
   text-align: left;
 }
 
 .email-input-group label,
-.username-input-group label,
+.name-input-group label,
 .password-input-group label {
   display: block;
   margin-bottom: 4px;
@@ -32,7 +32,7 @@
 }
 
 .email-input-group input,
-.username-input-group input,
+.name-input-group input,
 .password-input-group input {
   width: 100%;
   padding: 15px;
@@ -123,6 +123,15 @@
   text-decoration: underline;
 }
 
+.error-message {
+  color: #ff3333;
+  background-color: #ffebeb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .signup-container {
@@ -138,7 +147,7 @@
 
   .email-input-group input,
   .name-input-group input,
-  .username-input-group input,
+  .name-input-group input,
   .password-input-group input {
     padding: 12px;
     font-size: 14px;
@@ -169,7 +178,7 @@
 
   .email-input-group input,
   .name-input-group input,
-  .username-input-group input,
+  .name-input-group input,
   .password-input-group input {
     padding: 10px;
     font-size: 12px;
