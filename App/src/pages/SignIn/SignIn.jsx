@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Layout from "../../../Layout/Layout";
 import googleIcon from "../../assets/google.svg";
 import "./SignIn.css";
+import axios from "axios";
 
 function SignInPage() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
 
-  const handleSignIn = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    console.log("Signing in...");
+    try {
+      const response = await axios.post(
+        "https://localhost:7050/api/Auth/login",
+        formData
+      );
+
+      if (response.data.token) {
+        localStorage.setItem("jwtToken", response.data.token);
+        localStorage.setItem("userId", response.data.userId);
+        localStorage.setItem("userName", response.data.name);
+
+        navigate("/game-modes");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
+    }
   };
 
   const handleSignUp = () => {
@@ -24,11 +52,23 @@ function SignInPage() {
           <form onSubmit={handleSignIn}>
             <div className="email-input-group">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" placeholder="Your Email" required />
+              <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="password-input-group">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" placeholder="Enter Your Password" required />
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter Your Password"
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="forgot-password-div">
               <a href="/forgot-password" className="forgot-password-link">
@@ -43,7 +83,12 @@ function SignInPage() {
             <span>Or</span>
           </div>
           <button className="google-login-button">
-            <img src={googleIcon} alt="Google Icon" className="google-icon" width={"19px"} />
+            <img
+              src={googleIcon}
+              alt="Google Icon"
+              className="google-icon"
+              width={"19px"}
+            />
             Login with Google
           </button>
         </div>
