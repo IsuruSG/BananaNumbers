@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +15,39 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo()
+    {
+        Title = "BananaNumbers API",
+        Version = "v1"
+    });
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter into field the word 'Bearer' following by space and JWT",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    {
+        {
+            new OpenApiSecurityScheme()
+            {
+                Reference = new OpenApiReference()
+                {
+                    Id = "Bearer",
+                    Type = ReferenceType.SecurityScheme
+                }
+            },
+            new string[] { }
+        }
+    });
+});
 
 // Add CORS for React (running on port 3000)
 builder.Services.AddCors(options =>
@@ -30,6 +62,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IGameService, GameService>();
 
 // Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -73,6 +106,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("ReactFrontend");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

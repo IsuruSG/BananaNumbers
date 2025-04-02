@@ -21,6 +21,7 @@ function ClassicMode() {
   const [gameOver, setGameOver] = useState(false);
   const [open, setOpen] = useState(false);
   const [alertTitle, setAlertTitle] = useState("");
+  const [alertDescription, setAlertDescription] = useState("");
 
   // Fetch the question image and solution from the API
   const fetchQuestion = async () => {
@@ -52,7 +53,14 @@ function ClassicMode() {
       return () => clearTimeout(timer);
     } else if (timeLeft === 0 && !gameOver) {
       setMessage("⏳ Time's up!");
-      setAlertTitle("⏳ Time's up! Do you want to play another game?");
+      setAlertTitle("⏳ Time's up!");
+      setAlertDescription(
+        <div>
+          <div style={{ marginTop: "8px" }}>
+            Do you want to play another game?
+          </div>
+        </div>
+      );
       setOpen(true);
       setGameOver(true);
     }
@@ -69,7 +77,14 @@ function ClassicMode() {
     if (userAnswer.trim() === solution?.toString()) {
       // setMessage(null);
       setMessage("✅ Correct Answer! Well Done! 🎉");
-      setAlertTitle("✅ Correct Answer! Do you want to play another game?");
+      setAlertTitle("✅ Correct Answer!");
+      setAlertDescription(
+        <div>
+          <div style={{ marginTop: "8px" }}>
+            Do you want to play another game?
+          </div>
+        </div>
+      );
       setOpen(true);
       setGameOver(true);
     } else {
@@ -77,7 +92,14 @@ function ClassicMode() {
       setLives((prevLives) => prevLives - 1);
       if (lives === 1) {
         // setMessage(null);
-        setAlertTitle("❌ No lives left! Do you want to play another game?");
+        setAlertTitle("❌ No lives left!");
+        setAlertDescription(
+          <div>
+            <div style={{ marginTop: "8px" }}>
+              Do you want to play another game?
+            </div>
+          </div>
+        );
         setOpen(true);
         setGameOver(true);
       }
@@ -186,6 +208,7 @@ function ClassicMode() {
           handleStartNewGame={handleNewGame}
           handleClose={handleClose}
           alertTitle={alertTitle}
+          alertDescription={alertDescription}
         />
       )}
     </Layout>

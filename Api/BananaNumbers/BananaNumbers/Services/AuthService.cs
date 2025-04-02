@@ -27,7 +27,8 @@ namespace BananaNumbers.Services
                 Id = Guid.NewGuid(),
                 UserName = request.Email,
                 Email = request.Email,
-                Name = request.Name
+                Name = request.Name,
+                IsActive = true
             };
 
             return await _userManager.CreateAsync(user, request.Password);
@@ -60,7 +61,7 @@ namespace BananaNumbers.Services
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.UtcNow.AddHours(1);
+            var expires = DateTime.UtcNow.AddHours(24);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
