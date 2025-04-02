@@ -12,35 +12,52 @@ function GameModes() {
   const navigate = useNavigate();
 
   const handlePlayClassic = () => {
-    navigate("/classic-mode"); // Redirect to Classic Mode
+    navigate("/classic-mode");
   };
 
   const handlePlayEpic = () => {
-    navigate("/epic-mode"); // Redirect to Epic Mode
+    navigate("/epic-mode");
   };
 
   return (
     <Layout>
       <div>
         <h1 className="game-title">Banana Numbers</h1>
-        <p className="game-description">Choose your game mode and start guessing!</p>
+        <p className="game-description">
+          Choose your game mode and start guessing!
+        </p>
 
         <div className="game-modes-div">
           <div className="game-mode-card">
             <img src={infinityIcon} alt="Infinity Icon" className="mode-icon" />
             <h2 className="mode-title">Classic Mode</h2>
-            <p className="mode-description">Try to guess it correctly. No pressure, just fun!</p>
-            <button className="play-button" style={{ backgroundColor: "#F59E0B" }} onClick={handlePlayClassic}>
+            <p className="mode-description">
+              Try to guess it correctly. No pressure, just fun!
+            </p>
+            <button
+              className="play-button"
+              style={{ backgroundColor: "#F59E0B" }}
+              onClick={handlePlayClassic}>
               Play Classic
             </button>
           </div>
 
           <div className="game-mode-card">
-            <img src={clockIcon} alt="Banana Numbers Logo" className="mode-icon" />
+            <img
+              src={clockIcon}
+              alt="Banana Numbers Logo"
+              className="mode-icon"
+            />
             <h2 className="mode-title">Epic Mode</h2>
-            <p className="mode-description">Race against the clock. Guess as much as you can before time runs out!</p>
+            <p className="mode-description">
+              Race against the clock. Guess as much as you can before time runs
+              out!
+            </p>
 
-            <button className="play-button" style={{ backgroundColor: "#F97316" }} onClick={handlePlayEpic}>
+            <button
+              className="play-button"
+              style={{ backgroundColor: "#F97316" }}
+              onClick={handlePlayEpic}>
               Play Epic
             </button>
           </div>
