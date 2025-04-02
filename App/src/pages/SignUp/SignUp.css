@@ -10,6 +10,29 @@
   margin: 15px;
 }
 
+/* Loading state styles */
+.signup-button[disabled],
+.google-signup-button[disabled],
+.login-link[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff4444;
+  background-color: #ffebee;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Disabled input styles */
+input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
 .signupTitle {
   font-size: 32px;
   margin-bottom: 15px;
@@ -51,6 +74,8 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .signup-button:hover {

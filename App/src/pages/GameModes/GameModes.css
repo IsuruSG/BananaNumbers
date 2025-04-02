@@ -1,3 +1,39 @@
+.game-modes-container {
+  position: relative;
+  padding-top: 20px;
+}
+
+.nav-control {
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+}
+
+.nav-control.right {
+  right: 20px;
+}
+
+.nav-control.left {
+  left: 20px;
+}
+
+.game-title {
+  margin-top: 0;
+  padding-top: 8px;
+}
+
+.back-button {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  color: white !important;
+  z-index: 1;
+}
+
+.back-button svg {
+  font-size: 2rem; /* Larger arrow */
+}
+
 .game-title {
   font-size: 64px;
   color: #ffffff;
@@ -102,6 +138,28 @@
   height: auto;
 }
 
+/* Style for the login dialog */
+.MuiDialog-paper {
+  border-radius: 12px !important;
+  padding: 16px;
+}
+
+.MuiDialogTitle-root {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+}
+
+.MuiDialogContentText-root {
+  font-size: 1rem !important;
+  color: #4b5563 !important;
+}
+
+.MuiDialogActions-root {
+  padding: 16px 24px !important;
+  justify-content: space-between !important;
+}
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .game-title {
@@ -109,7 +167,7 @@
   }
 
   .game-description {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .game-modes-div {
@@ -119,6 +177,7 @@
   .game-mode-card {
     width: 45%;
     min-height: 280px;
+    padding: 15px;
   }
 
   .mode-title {
@@ -135,54 +194,87 @@
   }
 
   .stats {
-    padding-inline: 50px;
+    padding-inline: 30px;
   }
 
   .stat-card {
     width: 200px;
-    height: 90px;
   }
 }
 
 @media (max-width: 768px) {
   .game-title {
     font-size: 36px;
+    padding-top: 0;
   }
 
   .game-description {
-    font-size: 14px;
+    font-size: 15px;
+    margin-bottom: 20px;
   }
 
   .game-modes-div {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
 
   .game-mode-card {
     width: 80%;
-    min-height: 250px;
-  }
-
-  .mode-title {
-    font-size: 18px;
-  }
-
-  .mode-description {
-    font-size: 12px;
-  }
-
-  .play-button {
-    padding: 10px;
-    font-size: 12px;
+    min-height: auto;
+    padding: 20px 15px;
   }
 
   .stats {
-    padding-inline: 0px;
+    justify-content: center;
+    padding-inline: 10px;
   }
 
   .stat-card {
-    width: 150px;
+    width: 180px;
+    margin: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .game-title {
+    font-size: 32px;
+    padding-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .game-description {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .game-modes-div {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .game-mode-card {
+    width: 85%;
+    min-height: 220px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  .stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+    padding-inline: 10px;
+  }
+
+  .stat-card {
+    width: calc(50% - 20px);
+    min-width: 120px;
     height: 80px;
+    margin: 0;
+    padding: 10px;
   }
 }
 
@@ -215,6 +307,7 @@
 
   .stats {
     padding-inline: 0px;
+    font-size: 10px;
   }
 
   .stat-card {
@@ -227,5 +320,174 @@
   .star-icon {
     width: 20px;
     height: 20px;
+  }
+}
+
+/* @media (max-width: 400px) {
+  .game-title {
+    font-size: 24px;
+    margin-top: 5px;
+  }
+
+  .back-button {
+    left: 8px;
+    top: 10px;
+  }
+
+  .back-button svg {
+    font-size: 1.5rem;
+  }
+
+  .game-description {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .game-mode-card {
+    width: 95%;
+    padding: 12px 8px;
+    min-height: 180px;
+  }
+
+  .mode-icon {
+    width: 70px;
+    margin-bottom: 10px;
+  }
+
+  .mode-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .mode-description {
+    font-size: 13px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  .play-button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .stats {
+    margin-top: 10px;
+    gap: 2px;
+    font-size: 5px;
+  }
+
+  .stat-card {
+    width: 50px;
+    height: 65px;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 15px;
+  }
+
+  .stat-type {
+    font-size: 11px;
+  }
+
+  .stat {
+    font-size: 16px;
+  }
+
+  .trophy-icon,
+  .game-icon,
+  .star-icon {
+    width: 18px;
+    height: 18px;
+  }
+} */
+
+/* Extra Small Devices (iPhone SE, etc) */
+@media (max-width: 400px) {
+  .game-title {
+    font-size: 22px;
+  }
+
+  .game-description {
+    font-size: 12px;
+  }
+
+  .game-mode-card {
+    min-height: 180px;
+  }
+
+  .mode-icon {
+    width: 60px;
+  }
+
+  .mode-title {
+    font-size: 16px;
+  }
+
+  .mode-description {
+    font-size: 12px;
+  }
+
+  .play-button {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .stats {
+    margin-top: 10px;
+    gap: 2px;
+    font-size: 5px;
+  }
+
+  .stat-card {
+    width: 50px;
+    height: 65px;
+    padding: 3px;
+    margin: 2px;
+    border-radius: 15px;
+  }
+
+  .stat-type {
+    font-size: 11px;
+  }
+
+  .stat {
+    font-size: 11px;
+  }
+
+  .trophy-icon,
+  .game-icon,
+  .star-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* Super Small Devices (Galaxy Fold, etc) */
+@media (max-width: 320px) {
+  .game-title {
+    font-size: 20px;
+  }
+
+  .game-modes-div {
+    gap: 8px;
+  }
+
+  .game-mode-card {
+    min-height: 170px;
+    padding: 10px 6px;
+  }
+
+  .mode-title {
+    font-size: 15px;
+  }
+
+  .stats {
+    justify-content: space-around;
+    padding-inline: 0;
+    font-size: 10px;
+  }
+
+  .stat-card {
+    width: 28%;
+    margin: 2px;
   }
 }

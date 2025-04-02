@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Layout from "../../../Layout/Layout";
 import googleIcon from "../../assets/google.svg";
 import "./SignUp.css";
-import axios from "axios";
+import api from "../../utils/api";
+import BackButton from "../../components/BackButton/BackButton";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -13,6 +14,15 @@ function SignUpPage() {
     password: "",
   });
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      navigate("/game-modes", { replace: true });
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -23,17 +33,25 @@ function SignUpPage() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      const response = await axios.post(
-        "https://localhost:7050/api/Auth/register",
-        formData
-      );
+      const response = await api.post("/Auth/register", formData);
 
       if (response.status === 200) {
-        navigate("/sign-in");
+        navigate("/sign-in", {
+          state: {
+            message: "Registration successful! Please sign in.",
+          },
+        });
       }
     } catch (err) {
-      setError(err.response?.data?.errors?.join(", ") || "Registration failed");
+      setError(
+        err.response?.data?.errors?.join(", ") ||
+          err.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -43,6 +61,9 @@ function SignUpPage() {
 
   return (
     <Layout>
+      <div className="nav-control left">
+        <BackButton />
+      </div>
       <div className="signup-container">
         <div>
           <h1 className="signupTitle">Create an account</h1>
@@ -82,7 +103,7 @@ function SignUpPage() {
               Sign Up
             </button>
           </form>
-          <div className="or-divider">
+          {/* <div className="or-divider">
             <span>Or</span>
           </div>
           <button className="google-signup-button">
@@ -93,7 +114,7 @@ function SignUpPage() {
               width={"19px"}
             />
             Sign up with Google
-          </button>
+          </button> */}
         </div>
         <div>
           <p className="login-prompt">

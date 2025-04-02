@@ -10,6 +10,8 @@ namespace BananaNumbers.Data
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<GameDetail> GameDetails { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Layout from "../../../Layout/Layout";
 import googleIcon from "../../assets/google.svg";
 import "./SignIn.css";
-import axios from "axios";
+import api from "../../utils/api";
+import BackButton from "../../components/BackButton/BackButton";
 
 function SignInPage() {
   const navigate = useNavigate();
@@ -12,6 +13,15 @@ function SignInPage() {
     password: "",
   });
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      navigate("/game-modes", { replace: true });
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -22,21 +32,26 @@ function SignInPage() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      const response = await axios.post(
-        "https://localhost:7050/api/Auth/login",
-        formData
-      );
+      const response = await api.post("/Auth/login", formData);
 
       if (response.data.token) {
         localStorage.setItem("jwtToken", response.data.token);
         localStorage.setItem("userId", response.data.userId);
         localStorage.setItem("userName", response.data.name);
 
-        navigate("/game-modes");
+        const from = location.state?.from || "/game-modes";
+        navigate(from, { replace: true });
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      setError(
+        err.response?.data?.errors?.join(", ") ||
+          err.response?.data?.message ||
+          "Login failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,9 +61,13 @@ function SignInPage() {
 
   return (
     <Layout>
+      <div className="nav-control left">
+        <BackButton />
+      </div>
       <div className="signin-container">
         <div>
           <h1 className="loginTitle">Login</h1>
+          {error && <div className="error-message">{error}</div>}
           <form onSubmit={handleSignIn}>
             <div className="email-input-group">
               <label htmlFor="email">Email</label>
@@ -79,7 +98,7 @@ function SignInPage() {
               Login
             </button>
           </form>
-          <div className="or-divider">
+          {/* <div className="or-divider">
             <span>Or</span>
           </div>
           <button className="google-login-button">
@@ -90,7 +109,7 @@ function SignInPage() {
               width={"19px"}
             />
             Login with Google
-          </button>
+          </button> */}
         </div>
         <div>
           <p className="signup-prompt">
