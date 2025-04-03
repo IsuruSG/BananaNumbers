@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://localhost:7050/api",
+  baseURL: import.meta.env.VITE_REACT_API_URL,
   // timeout: 20000,
 });
 

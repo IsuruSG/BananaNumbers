@@ -14,6 +14,8 @@ psd
 thumb
 sketch
 
+.env.local
+
 # Common node modules locations
 /node_modules
 /wwwroot/node_modules
